@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafafa;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 30px;
+        }
+
+        .page .header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .page .header .logo {
+            margin-bottom: 15px;
+        }
+
+        .page .container {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .page .container label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .page .container input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #dbdbdb;
+            margin-bottom: 10px;
+        }
+
+        .page .container button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #0095f6;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .page .container button:hover {
+            background-color: #0077b5;
+        }
+
+        @media only screen and (max-width: 400px) {
+            .page {
+                width: 250px;
+            }
+            .page .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <div class="page">
+        <div class="header">
+            <h1 class="logo">Instagram</h1>
+        </div>
+        <div class="container">
+            <form th:method="POST" th:action="@{/users/saveUser}" th:object="${newUser}">
+                <div>
+                    <label for="userName">User name</label>
+                    <input th:field="*{userName}" id="username" type="text">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input th:field="*{password}" id="password" type="password">
+                </div>
+                <div>
+                    <label for="phoneNumber">Phone number</label>
+                    <input th:field="*{phoneNumber}" id="phoneNumber" type="text" placeholder="+996">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input th:field="*{email}" id="email" type="text">
+                </div>
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</html>
